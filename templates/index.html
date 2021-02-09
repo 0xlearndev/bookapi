@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Bilawal Riaz">
+    <title>API Project</title>
+
+    
+
+    <!-- core CSS -->
+<link href="{{ url_for('static',filename='styles/main.css') }}" rel="stylesheet">
+<link href="{{ url_for('static',filename='styles/signin.css') }}" rel="stylesheet">
+
+    <!-- Favicons -->
+<meta name="theme-color" content="#7952b3">
+
+
+  </head>
+  <body class="text-center">
+    
+<main class="form-signin">
+    <!-- Logo -->
+    {% if output %}
+    {% if output[0]['pic'] %}
+    <img class="mb-4" src="{{ output[0]['pic'] }}" alt="" width="200" height="300">
+    {% else %}
+    <img class="mb-4" src="{{ url_for('static',filename='styles/bootstrap-logo.svg') }}" alt="" width="72" height="57">
+    {% endif %}
+    {% endif %}
+     <!-- Title -->
+     {% if output %}
+    <h1 class="h3 mb-3 fw-normal">{{output[0]['title']}}</h1>
+    {% endif %}
+
+    {% if status == 'home' %}
+    <h1 class="h1 mb-3 fw-normal">Welcome to BookAPI</h1>
+    <p>Start by adding /api/v1/resources/books?id=0 to the url!</p>
+    {% endif %}
+
+    {% if status == 'found' %}
+    <h4 class="h4 mb-3 fw-normal">by <mark>{{output[0]['author']}} </mark></h4>
+    <p>{{output[0]['synopsis']}} </p>
+    {% endif %}
+    {% if output %}
+    <a href = "{{ output[0]['link']}}" class="btn btn-primary">Book</button> </a>
+    {% endif %}
+
+    {% if status == 'not found' %}
+    <img class="mb-4" src="{{ url_for('static',filename='styles/404.svg') }}" alt="" width="200" height="300"><br>
+    {% endif %}
+    <a href = "{{ url_for('home')}}" class="btn btn-primary">Home</button> </a>
+   
+    <small><p class="mt-3 mb-1 text-muted">© 2021 Bilawal Riaz // Status: {{status}}</p></small>
+</main>
+
+
+    
+  
+
+</body></html>

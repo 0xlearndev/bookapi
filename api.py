@@ -80,4 +80,4 @@ def api_id():
     print(results)
     return render_template('index.html', output=results, json=jsonify(results), notfound=found, status=status)
 
-app.run()
+app.run(host='0.0.0.0')

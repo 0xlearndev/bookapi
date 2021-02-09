@@ -34,24 +34,26 @@
     {% endif %}
 
     {% if status == 'home' %}
-    <h1 class="h1 mb-3 fw-normal">Welcome to BookAPI</h1>
-    <p>Start by adding /api/v1/resources/books?id=0 to the url!</p>
+    <h1 class="h1 mb-3 fw-normal">Welcome to <b>BookAPI</b></h1>
+    <p>Start by adding</p> <span class="badge bg-dark">/api/v1/resources/books?id=0</span> <p>to the url!</p>
     {% endif %}
 
     {% if status == 'found' %}
     <h4 class="h4 mb-3 fw-normal">by <mark>{{output[0]['author']}} </mark></h4>
     <p>{{output[0]['synopsis']}} </p>
     {% endif %}
+<br>
+    <a href = "{{ url_for('home')}}" class="btn btn-primary btn-sm">Home</a> 
     {% if output %}
-    <a href = "{{ output[0]['link']}}" class="btn btn-primary">Book</button> </a>
+    <a href = "{{ output[0]['link']}}" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">More info</button> </a>
     {% endif %}
-
+  <a href = "{{ url_for('api_id', id=1) }}" class="btn btn-success btn-sm">Example </a>
     {% if status == 'not found' %}
     <img class="mb-4" src="{{ url_for('static',filename='styles/404.svg') }}" alt="" width="200" height="300"><br>
     {% endif %}
-    <a href = "{{ url_for('home')}}" class="btn btn-primary">Home</button> </a>
-   
-    <small><p class="mt-3 mb-1 text-muted">© 2021 Bilawal Riaz // Status: {{status}}</p></small>
+    
+   <br>
+    <small><span class="rounded-pill badge bg-primary">© 2021 Bilawal Riaz // Status: {{status}}</span></small>
 </main>
 
 

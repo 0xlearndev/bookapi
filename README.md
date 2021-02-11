@@ -8,3 +8,5 @@ Run using python3 apy.py
 Navigate to 127.0.0.1:5000
 
 See a demo at [api.learndev.me](https://api.learndev.me)
+
+![Screenshot](https://i.imgur.com/ZiwpvnX.png)
